@@ -16,6 +16,52 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+  add(n) {
+    this.result += n;
+  }
+  subtract(number) {
+    this.result -= number;
+  }
+  multiply(number) {
+    this.result *= number;
+  }
+  divide(number) {
+    this.result /= number;
+  }
+  getResult() {
+    return this.result;
+  }
+  clear() {
+    this.result = 0;
+  }
+  isValidExp = (expression) => {
+    let validexp = /^[+\-*/().0-9\s]+$/;
+    if (!expression.test(validexp)) {
+      throw new Error("Invalid Input");
+    }
+  };
+  calulate() {
+    let str = "  10 + 5 - 6";
+    let strg = str.split(" ").join("");
 
-module.exports = Calculator;
+    try {
+      this.isValidExp(strg);
+    } catch (error) {
+      console.error(error.message);
+    }
+
+    console.log(strg);
+  }
+}
+
+const cal = new Calculator();
+
+cal.add(5);
+cal.calulate();
+let b = cal.getResult();
+console.log(b);
+// module.exports = Calculator;
